@@ -1,0 +1,26 @@
+extends ../layouts/main.pug
+block content
+
+    div
+    table.table.table-striped
+      thead
+        tr
+          th Team Name
+          th State
+          th Conference
+          th Time Created
+          th Time Last Uptated
+    
+      tr
+        td
+          p(href=`/sportsteams/${sportsteam.id}`)= sportsteam.teamName
+        td
+          p(href=`/sportsteams/${sportsteam.id}`)= sportsteam.state
+        td
+          p(href=`/sportsteams/${sportsteam.id}`)= sportsteam.conference
+        td
+          p(href=`/sportsteams/${sportsteam.id}`)= sportsteam.createdAt
+        td
+          p(href=`/sportsteams/${sportsteam.id}`)= sportsteam.updatedAt
+       
+      

@@ -1,0 +1,21 @@
+form(action=(sportsteam ? `/sportsteams/update` : "/sportsteams"), method="POST")
+  if sportsteam
+    input(type="hidden", name="id", value=sportsteam.id)
+
+
+  .form-group
+    label Team Name
+    input.form-control(name="sportsteam[teamName]", required, value=(sportsteam ? sportsteam.teamName : null))
+
+  .form-group
+    label State
+    input.form-control(name="sportsteam[state]", required, value=(sportsteam ? sportsteam.state : null))
+
+  .form-group
+    label Conference
+      select.form-control(name="sportsteam[conference]", required)
+        each conference in ['EAST', 'WEST'] 
+          option(value=conference, selected=(sportsteam && sportsteam.conference === conference))= conference.toLowerCase()
+  
+  .form-group
+    button.btn.btn-dark(type="submit") Submit

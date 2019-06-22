@@ -1,0 +1,32 @@
+extends ../layouts/main.pug
+block content
+  .container
+    header
+      h1= title
+
+    div
+      table.table.table-striped
+        thead
+          tr
+            th Team Name
+            th State
+            th Conference
+            th Actions
+          
+        
+        tbody
+          each sportsteam in sportsteams
+            tr
+              td
+                a(href=`/sportsteams/${sportsteam.id}`)= sportsteam.teamName
+              td
+                a(href=`/sportsteams/${sportsteam.id}`)= sportsteam.state
+              td
+                a(href=`/sportsteams/${sportsteam.id}`)= sportsteam.conference
+              td
+                a(href=`/sportsteams/${sportsteam.id}/edit`) Edit              
+                  = ` | `
+                  form.destroy(action=`/sportsteams/destroy`, method="POST", onsubmit='return confirm("Are you sure you want to delete this team?")')
+                    input(type="hidden", name="id", value=`${sportsteam.id}`)
+                    input.destroy(type="submit", value="Destroy")
+          
